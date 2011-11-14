@@ -3,7 +3,7 @@
 $PluginInfo['QuickProfiler'] = array(
 	'Name' => 'Quick Profiler',
 	'Description' => 'Adapts PHP Quick Profiler to work with Garden. PHP Quick Profiler is a helper class that outputs debugging related information to the screen when the page has finished executing.',
-	'Version' => '1.04',
+	'Version' => '1.10',
 	'Date' => '30 Oct 2011',
 	'Updated' => 'Autumn 2011',
 	'Author' => 'Infamous',

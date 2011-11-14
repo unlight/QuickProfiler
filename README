@@ -18,9 +18,11 @@ Press ~ (tilde) again or ESC to close it.
 
 CHANGELOG
 =========
-1.03 (15 Nov 2011)
+1.10 (15 Nov 2011)
 - css fixes
 - Log::Dump()
+- Log::Memory()
+- various interface improvements
 
 1.03 (14 Nov 2011)
 - fixed bug when delivery type was not correctly detected
