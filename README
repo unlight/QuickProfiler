@@ -1,0 +1,36 @@
+REQUIREMENTS
+============
+PHP 5.3+
+Modern browser with enabled JavaScript.
+
+SETUP
+=====
+Enable plugin in dashboard.
+ATTENTION! Plugin add code to /conf/bootstrap.before.php
+If something goes wrong add manually to the begin of the file:
+if (file_exists(PATH_ROOT . '/plugins/QuickProfiler/class.log.php')) require_once PATH_ROOT . '/plugins/QuickProfiler/class.log.php';
+
+USAGE
+=====
+Press ~ (tilde) to open console.
+Click on tab title to switch between panels.
+Press ~ (tilde) again or ESC to close it.
+
+CHANGELOG
+=========
+1.03 (15 Nov 2011)
+- css fixes
+- Log::Dump()
+
+1.03 (14 Nov 2011)
+- fixed bug when delivery type was not correctly detected
+
+1.02 (14 Nov 2011)
+- quick fix for permissions to view
+
+1.01 (14 Nov 2011)
+- permissions to view
+- removed explain similar info
+
+1.00 (13 Nov 2011)
+- first release

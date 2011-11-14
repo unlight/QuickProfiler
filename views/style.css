@@ -1,0 +1,182 @@
+#QuickProfiler * {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	font-style: normal;
+	background: none;
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	/*overflow: visible;*/
+}
+
+#QuickProfiler {
+	margin: 0; 
+	padding: 0;
+	width: 100%;
+	font-family: "Lucida Grande", Tahoma, Arial, sans-serif;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	position: fixed;
+	top: 0;
+	height: 80%;
+	overflow: auto;
+	background-image: url("data:image/gif;base64,R0lGODlhAwADAIABAAAAAP///yH5BAEAAAEALAAAAAADAAMAAAIDRG5YADs=") !important;
+	line-height: 1.2em;
+}
+
+#QuickProfiler .None, #QuickProfiler.None {
+	display: none !important;
+}
+
+#QuickProfiler .Tabs {
+	width: 100%; 
+	display: table;
+	background-image: inherit;
+}
+
+#QuickProfiler .Tab {
+	display: table-cell;
+	cursor: pointer;
+	padding-top: 10px;
+	text-align: center;
+	width: 1%;
+}
+
+#QuickProfiler .Tab.Active {
+	/*background: rgba(120, 120, 120, 0.3);*/
+}
+
+#QuickProfiler .Tab:hover {
+	text-shadow: 0px 0px 3px lightyellow;
+}
+
+
+#QuickProfiler .Tab var {
+	text-align: center;
+	display: block;
+	font-size: 23px;
+	font-style: normal;
+	font-weight: bold;
+	margin: 2px 0;
+	background-color: transparent;
+}
+#QuickProfiler .Tab strong {
+	text-shadow: 1px 1px 1px #000;
+	font-size: 12px;
+	margin: 2px 0;
+	font-weight: bold;
+}
+
+#QuickProfiler .Panels {
+	padding: 10px 0;
+	font-family: Monaco, "Consolas", "Lucida Console", "Courier New", monospace;
+	font-size: 13px;
+	text-align: left;
+}
+
+#QuickProfiler div.Panels div.Panel {
+	display: table;
+	width: 100%;
+}
+
+#QuickProfiler .Panel pre {
+	display: inline-block;
+	white-space: normal;
+}
+
+#QuickProfiler div.Panel div.Logs div > b {
+	color: #bbb;
+	display: block;
+}
+
+#QuickProfiler pre.Meta {
+	color: #aaa;
+	display: block;
+	font-style: normal;
+	float: none;
+	font-size: 11px; 
+}
+
+#QuickProfiler pre.Meta b {
+	color: #E6F387;
+}
+
+	
+#QuickProfiler .Panel em {
+	color: #FFFD70;
+	display: block;
+	float: right;
+	white-space: normal;
+}
+
+#QuickProfiler div.Logs > div {
+	display: block;
+	border-bottom: 1px dotted #555;
+	padding: 0.3em 15px 0em;
+}
+
+#QuickProfiler div.Logs > div:nth-child(2n+1) {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================== Settings */
+#QuickProfiler div.Panels div.Panel div.Logs div.Dump pre {
+	white-space: pre; 
+	overflow: visible;
+	color: #eee;
+	font-size: 12px;
+}
+
+#QuickProfiler div.Panels div.Panel div.Logs div.Query pre {
+	max-height: 3.8em;
+	overflow-x: auto;
+}
+
+/* ============================================== Clear Fix */
+#QuickProfiler .Logs div:before,
+#QuickProfiler .Logs div:after { content: ""; display: table; }
+#QuickProfiler .Logs div:after { clear:both; }
+
+/* =============================================== Colors */
+#QuickProfiler .Blue { 
+	color: #5D86B2;
+	background: #5D86B2;
+}
+
+#QuickProfiler .LightBlue {
+	color: LightBlue;
+	background: LightBlue;
+}
+
+#QuickProfiler .LightGreen {
+	color: LightGreen;
+	background: LightGreen;
+}
+
+#QuickProfiler .LightCoral {
+	color: LightCoral;
+	background: LightCoral;
+}
+
+#QuickProfiler .Purple {
+	color: #9E7EDC;
+	background: #9E7EDC;
+}
+
+#QuickProfiler .Green {
+	color: #69992B;
+	background: #69992B;
+}
+
+#QuickProfiler .Orange {
+	color: #E69400;
+	background: #E69400;
+}
+
+#QuickProfiler .IndianRed {
+	color: IndianRed;
+	background: IndianRed;
+}
