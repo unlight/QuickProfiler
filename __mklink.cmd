@@ -1,1 +1,0 @@
-php -q D:\My\Dev\garden.local\applications\testing\make-git-links.php D:\My\Dev\Garden-Addons\QuickProfiler d:\My\Dev\garden.local\plugins\QuickProfiler

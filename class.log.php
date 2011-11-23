@@ -13,7 +13,6 @@ final class Log {
 		'LightGreen', 
 		'LightCoral', 
 		'Purple', 
-		'Green', 
 		'Orange', 
 		'IndianRed'
 	);
@@ -44,7 +43,7 @@ final class Log {
 	public static function Tab($Name, $Value = Null, $Description = '', $Color = '', $AddToConsole = False) {
 		if (!is_array($Name)) $Name = compact('Name', 'Value', 'Color', 'Description');
 		$TabName = $Name['Name'];
-		$Color = self::GetColor($Name['Color']);
+		$Name['Color'] = self::GetColor($Name['Color']);
 		$Tab =& self::$Tabs[$TabName];
 		if (empty($Tab)) $Tab = array();
 		$Tab = array_merge($Tab, array_filter($Name));
@@ -63,6 +62,7 @@ final class Log {
 	public static function GetColor($Name = '', $bRemoveFromAvailable = True) {
 		if (!$Name) {
 			$Index = array_rand(self::$AvailableColors);
+			if ($bRemoveFromAvailable) $bRemoveFromAvailable = False;
 		} else {
 			$Index = array_search($Name, self::$AvailableColors);
 			if ($Index === False) throw new Exception("Color '$Name' not found in list or non available.");
@@ -74,9 +74,12 @@ final class Log {
 	
 	public static function GetLogs() {
 		$Result = self::$Logs;
-		foreach (array_keys($Result) as $Type) {
+		$GetLogNameFunction = create_function('$A', 'return GetValue(0, explode(" ", $A));');
+		$LogNames = array_map($GetLogNameFunction, array_keys($Result));
+		$LogNames = array_unique($LogNames);
+		foreach ($LogNames as $Type) {
 			if (array_key_exists($Type, self::$Tabs)) continue;
-			if ($Type == 'Console') $Color = self::GetColor('Green');
+			if ($Type == 'Console') $Color = 'Green';
 			else $Color = self::GetColor();
 			self::$Tabs[$Type] = array(
 				'Name' => $Type,
@@ -85,6 +88,7 @@ final class Log {
 				'Description' => $Type
 			);
 		}
+		//d(self::$Tabs);
 		return $Result;
 	}
 	
@@ -99,7 +103,7 @@ final class Log {
 			$VarDump = self::VarDump($Arg);
 			$Item = new StdClass();
 			$Item->Name = $VarDump;
-			$Item->Type = 'Dump';
+			$Item->Type = 'Dump Code';
 			$Item->Value = False;
 			self::$Logs['Console'][] = $Item;
 			self::$Logs['Dump'][] = $Item;
@@ -163,13 +167,31 @@ final class Log {
 		return $Message;
 	}
 	
+	/**
+	* Set raw item $Item to console log colle.
+	* 
+	* @param object $Item.
+	*/
+	public static function Item($Item) {
+		if (!is_object($Item)) $Item = (object) $Item;
+		$Types = explode(' ', $Item->Type);
+		if (in_array('Code', $Types)) if (!is_string($Item->Name)) $Item->Name = self::VarDump($Item->Name);
+		self::$Logs['Console'][] = $Item;
+		self::$Logs[$Types[0]][] = $Item;
+	}
+	
 	public static function Console($Type, $Name, $Value = False) {
 		$Item = new StdClass();
+		$Types = explode(' ', $Type);
+		if (in_array('Code', $Types)) {
+			if (!is_string($Name)) $Name = self::VarDump($Name);
+		}
 		$Item->Name = $Name;
 		$Item->Type = $Type;
 		$Item->Value = $Value;
 		self::$Logs['Console'][] = $Item;
-		self::$Logs[$Type][] = $Item;
+		$LogName = $Types[0];
+		self::$Logs[$LogName][] = $Item;
 	}
 	
 	public static function Speed($Name = 'Point in time') {

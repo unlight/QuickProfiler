@@ -7,6 +7,10 @@ class QuickProfilerDatabase extends Gdn_Database {
 	public function Queries() {
 		return $this->Queries;
 	}
+	
+	public function QueryTimes() {
+		return array();
+	}
 
 	protected function GetInfo(&$Query, $Trace) {
 		$Class = GetValue('class', $Trace);
@@ -18,7 +22,7 @@ class QuickProfilerDatabase extends Gdn_Database {
 	public function Query($Sql, $InputParameters = NULL, $Options = array()) {
 		$SQL =& $this->_SQL;
 		$TimeStart = Now();
-		$Query = array('Sql' => $SQL->ApplyParameters($Sql, $InputParameters));
+		$Query = array('Sql' => $SQL->ApplyParameters($Sql, $InputParameters), 'Parameters' => $InputParameters);
 		
 		$Result = parent::Query($Sql, $InputParameters, $Options);
 		if (StringBeginsWith($Sql, 'set names')) return $Result;
@@ -35,7 +39,7 @@ class QuickProfilerDatabase extends Gdn_Database {
 			}
 		}
 		
-		if (empty($Query['Method'])) $this->GetInfo($Query, $Backtrace[$SqlDriverIndex+1]);
+		if (empty($Query['Method'])) $this->GetInfo($Query, $Trace);
 		
 		$Query['MethodArgs'] = $Query['Method'] . '(' . Log::FormatArgs($Query['Arguments']) . ')'; 
 		

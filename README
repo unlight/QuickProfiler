@@ -1,6 +1,6 @@
 REQUIREMENTS
 ============
-PHP 5.3+
+PHP 5.2+
 Modern browser with enabled JavaScript.
 
 SETUP
@@ -18,6 +18,32 @@ Press ~ (tilde) again or ESC to close it.
 
 CHANGELOG
 =========
+1.24 (23 Nov 2011)
+- changed dummy handler to Base_All_Handler
+- added control in Base_AfterBody_Handler
+
+1.23 (17 Nov 2011)
+- removed jquery depency
+- log::checkpoint moved to correct place
+- added log::item() method
+
+1.21 (16 Nov 2011)
+- added QueryTimes() function (used in deverror.master.php)
+- added Parameters to $Query (used in deverror.master.php)
+
+1.20 (15 Nov 2011)
+- fixed style for code and vars
+- log cache information
+- log controller::data
+- replaced __DIR__ by dirname(__FILE__)
+- fixed auto color choose
+- prevent double draw console
+- green color reserved
+- removed debug code
+
+1.11 (15 Nov 2011)
+- rewritten anonymous functions (PHP 5.3 is not required anymore)
+
 1.10 (15 Nov 2011)
 - css fixes
 - Log::Dump()
